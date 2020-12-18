@@ -1,0 +1,6 @@
+{
+  "https": true,
+  "requestUrl": "https://stallman.org/",
+  "proxyIporHostname": "127.0.0.1",
+  "proxyPort": 1080
+}
