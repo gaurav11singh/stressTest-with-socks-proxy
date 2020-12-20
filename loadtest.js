@@ -22,7 +22,6 @@ let agent = new SocksProxyAgent(proxy);
 
 function sendRequest(requestID, callback) {
   request.agent = agent;
-
   for (let j = 1; j <= 5; j++) {
     if (conf.https == true) {
       https.get(request, (res) => {
@@ -73,7 +72,7 @@ function sendRequest(requestID, callback) {
 }
 
 
-(function myLoop(i) {
+(function recursiveRequest(i) {
   setTimeout(() => {
     sendRequest(i, function (res) {
       if (res.statusCode == "200") {
@@ -88,7 +87,7 @@ function sendRequest(requestID, callback) {
         })
       }
     })
-    if (--i) myLoop(i);
+    if (--i) recursiveRequest(i);
   }, 1000)
 })(1000);
 
